@@ -11,8 +11,8 @@ class ContactScreen extends StatefulWidget {
 class _ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
         leading: Row(
           children: [
             Icon(CupertinoIcons.back),
@@ -22,128 +22,132 @@ class _ContactScreenState extends State<ContactScreen> {
         trailing: Icon(CupertinoIcons.add),
       ),
       child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          children: [
-            SizedBox(height: 110),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Contact",
-                style: TextStyle(color: CupertinoColors.black, fontSize: 30),
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 110),
+              const Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Contact",
+                  style: TextStyle(color: CupertinoColors.black, fontSize: 30),
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            CupertinoSearchTextField(
-              placeholder: 'Search',
-            ),
-            SizedBox(height: 10),
-            Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+              const SizedBox(height: 10),
+              const CupertinoSearchTextField(placeholder: 'Search'),
+              const SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
                     'A',
                     style: TextStyle(
                         color: CupertinoColors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                ),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'John AppleSeeds',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-                SizedBox(height: 15),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                  const SizedBox(height: 15),
+                  const Text(
                     'B',
                     style: TextStyle(
                         color: CupertinoColors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                ),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'Kate Bell',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-                SizedBox(height: 15),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                  const SizedBox(height: 15),
+                  const Text(
                     'H',
                     style: TextStyle(
                         color: CupertinoColors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                ),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'Anna Haro',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'Daniel Higgins Jr.',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-                SizedBox(height: 15),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                  const SizedBox(height: 15),
+                  const Text(
                     'T',
                     style: TextStyle(
                         color: CupertinoColors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                ),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'David Taylor',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-                SizedBox(height: 15),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                  const SizedBox(height: 15),
+                  const Text(
                     'Z',
                     style: TextStyle(
                         color: CupertinoColors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                ),
-                Divider(thickness: 1),
-                Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
+                  const Divider(thickness: 1),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'info');
+                    },
+                    child: const Text(
                       'Hank M. Zakroff',
                       style: TextStyle(color: CupertinoColors.black),
-                    )),
-                Divider(thickness: 1),
-              ],
-            ),
-          ],
+                    ),
+                  ),
+                  const Divider(thickness: 1),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
