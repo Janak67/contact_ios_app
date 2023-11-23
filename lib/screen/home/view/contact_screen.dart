@@ -12,14 +12,42 @@ class _ContactScreenState extends State<ContactScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        leading: Row(
+      navigationBar: CupertinoNavigationBar(
+        leading: const Row(
           children: [
             Icon(CupertinoIcons.back),
             Text("Lists"),
           ],
         ),
-        trailing: Icon(CupertinoIcons.add),
+        trailing: CupertinoButton(
+          onPressed: () {
+            showCupertinoModalPopup(
+              context: context,
+              builder: (context) => CupertinoActionSheet(
+                title: const Text('Aru Sure to exit'),
+                actions: [
+                  CupertinoActionSheetAction(
+                    onPressed: () {},
+                    isDefaultAction: true,
+                    child: const Text('Yes'),
+                  ),
+                  CupertinoActionSheetAction(
+                    onPressed: () {},
+                    isDestructiveAction: true,
+                    child: const Text('No'),
+                  ),
+                ],
+                cancelButton: CupertinoActionSheetAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Cancel'),
+                ),
+              ),
+            );
+          },
+          child: const Icon(CupertinoIcons.add_circled_solid),
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(10),
