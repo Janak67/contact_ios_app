@@ -1,5 +1,7 @@
+import 'package:contact_ios_app/screen/home/provider/contact_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({Key? key}) : super(key: key);
@@ -9,8 +11,13 @@ class ContactScreen extends StatefulWidget {
 }
 
 class _ContactScreenState extends State<ContactScreen> {
+  ContactProvider? providerw;
+  ContactProvider? providerr;
+
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<ContactProvider>();
+    providerw = context.watch<ContactProvider>();
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: const Row(
@@ -19,34 +26,59 @@ class _ContactScreenState extends State<ContactScreen> {
             Text("Lists"),
           ],
         ),
-        trailing: CupertinoButton(
-          onPressed: () {
-            showCupertinoModalPopup(
-              context: context,
-              builder: (context) => CupertinoActionSheet(
-                title: const Text('Aru Sure to exit'),
-                actions: [
-                  CupertinoActionSheetAction(
-                    onPressed: () {},
-                    isDefaultAction: true,
-                    child: const Text('Yes'),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CupertinoButton(
+              onPressed: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) => CupertinoActionSheet(
+                    title: const Text('Aru Sure to exit'),
+                    actions: [
+                      CupertinoActionSheetAction(
+                        onPressed: () {},
+                        isDefaultAction: true,
+                        child: const Text('Yes'),
+                      ),
+                      CupertinoActionSheetAction(
+                        onPressed: () {},
+                        isDestructiveAction: true,
+                        child: const Text('No'),
+                      ),
+                    ],
+                    cancelButton: CupertinoActionSheetAction(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel'),
+                    ),
                   ),
-                  CupertinoActionSheetAction(
-                    onPressed: () {},
-                    isDestructiveAction: true,
-                    child: const Text('No'),
-                  ),
-                ],
-                cancelButton: CupertinoActionSheetAction(
-                  onPressed: () {
-                    Navigator.pop(context);
+                );
+              },
+              child: const Icon(CupertinoIcons.add_circled_solid),
+            ),
+            CupertinoButton(
+              child: const Icon(CupertinoIcons.calendar),
+              onPressed: () {
+                showCupertinoDialog(
+                  builder: (context) {
+                    return CupertinoDatePicker(
+                      onDateTimeChanged: (value) {
+                        providerr!.changeDate(value);
+                      },
+                      maximumDate: DateTime(2001),
+                      maximumYear: 2001,
+                      minimumDate: DateTime(2025),
+                      minimumYear: 2025,
+                      initialDateTime: providerw!.date,
+                    );
                   },
-                  child: const Text('Cancel'),
-                ),
-              ),
-            );
-          },
-          child: const Icon(CupertinoIcons.add_circled_solid),
+                  context: context,
+                );
+              },
+            ),
+          ],
         ),
       ),
       child: Padding(
