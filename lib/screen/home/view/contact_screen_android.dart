@@ -19,6 +19,15 @@ class _ContactScreenAndroidState extends State<ContactScreenAndroid> {
             'Contact App',
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27),
           ),
+          actions: [
+            PopupMenuButton(itemBuilder: (context) {
+              return [
+                const PopupMenuItem(child: Text('Contact Settings'),),
+                const PopupMenuItem(child: Text('Date & Time'),),
+                const PopupMenuItem(child: Text('Settings'),),
+              ];
+            },)
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

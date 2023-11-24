@@ -29,6 +29,33 @@ class _ContactScreenState extends State<ContactScreen> {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Text(
+                '${providerr!.date?.day}/${providerr!.date?.month}/${providerr!.date?.year}'),
+            const SizedBox(
+              width: 5,
+            ),
+            GestureDetector(
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) => SizedBox(
+                    height: 200,
+                    child: CupertinoDatePicker(
+                      initialDateTime: providerr!.date,
+                      onDateTimeChanged: (value) {
+                        providerr!.changeDate(value);
+                      },
+                      // maximumDate: DateTime(2001),
+                      // maximumYear: 2001,
+                      // minimumDate: DateTime(2050),
+                      // minimumYear: 2050,
+                      backgroundColor: CupertinoColors.white,
+                    ),
+                  ),
+                );
+              },
+              child: const Icon(CupertinoIcons.calendar),
+            ),
             CupertinoButton(
               onPressed: () {
                 showCupertinoModalPopup(
@@ -58,26 +85,6 @@ class _ContactScreenState extends State<ContactScreen> {
               },
               child: const Icon(CupertinoIcons.add_circled_solid),
             ),
-            CupertinoButton(
-              child: const Icon(CupertinoIcons.calendar),
-              onPressed: () {
-                showCupertinoDialog(
-                  builder: (context) {
-                    return CupertinoDatePicker(
-                      onDateTimeChanged: (value) {
-                        providerr!.changeDate(value);
-                      },
-                      maximumDate: DateTime(2001),
-                      maximumYear: 2001,
-                      minimumDate: DateTime(2025),
-                      minimumYear: 2025,
-                      initialDateTime: providerw!.date,
-                    );
-                  },
-                  context: context,
-                );
-              },
-            ),
           ],
         ),
       ),
@@ -87,12 +94,39 @@ class _ContactScreenState extends State<ContactScreen> {
           child: Column(
             children: [
               const SizedBox(height: 110),
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Contact",
-                  style: TextStyle(color: CupertinoColors.black, fontSize: 30),
-                ),
+              const Row(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Contact",
+                      style:
+                          TextStyle(color: CupertinoColors.black, fontSize: 30),
+                    ),
+                  ),
+                  Spacer(),
+                  Text('Time:- hh:mm:ss'),
+                  SizedBox(height: 20),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     showCupertinoModalPopup(
+                  //       context: context,
+                  //       builder: (context) => SizedBox(
+                  //         height: 200,
+                  //         child: CupertinoDatePicker(
+                  //           onDateTimeChanged: (value) {
+                  //             providerr!.changeTime(value);
+                  //           },
+                  //           initialDateTime: providerr!.time,
+                  //           mode: CupertinoDatePickerMode.time,
+                  //           use24hFormat: true,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  //   child: const Icon(CupertinoIcons.time),
+                  // ),
+                ],
               ),
               const SizedBox(height: 10),
               const CupertinoSearchTextField(placeholder: 'Search'),
@@ -110,7 +144,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'John AppleSeeds',
@@ -129,7 +163,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'Kate Bell',
@@ -148,7 +182,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'Anna Haro',
@@ -158,7 +192,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'Daniel Higgins Jr.',
@@ -177,7 +211,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'David Taylor',
@@ -196,7 +230,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, 'info');
+                      Navigator.pushNamed(context, 'infoIos');
                     },
                     child: const Text(
                       'Hank M. Zakroff',

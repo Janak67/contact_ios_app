@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ContactProvider with ChangeNotifier {
+class ContactInfoProvider with ChangeNotifier {
   DateTime? date = DateTime.now();
   TimeOfDay? time = TimeOfDay.now();
 
@@ -9,8 +10,8 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeTime(TimeOfDay? d2) {
-    time = d2;
+  void changeTime(TimeOfDay? d1) {
+    time = d1;
     notifyListeners();
   }
 }

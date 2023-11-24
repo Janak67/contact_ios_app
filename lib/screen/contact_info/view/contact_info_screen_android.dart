@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/contact_info_provider.dart';
 
 class ContactInfoScreenAndroid extends StatefulWidget {
   const ContactInfoScreenAndroid({Key? key}) : super(key: key);
 
   @override
-  State<ContactInfoScreenAndroid> createState() => _ContactInfoScreenAndroidState();
+  State<ContactInfoScreenAndroid> createState() =>
+      _ContactInfoScreenAndroidState();
 }
 
 class _ContactInfoScreenAndroidState extends State<ContactInfoScreenAndroid> {
+  ContactInfoProvider? providerw;
+  ContactInfoProvider? providerr;
+
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<ContactInfoProvider>();
+    providerw = context.watch<ContactInfoProvider>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -177,29 +186,53 @@ class _ContactInfoScreenAndroidState extends State<ContactInfoScreenAndroid> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 170),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.edit,
-                            color: Colors.grey, size: 30),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Date:- ${providerr!.date?.day}/${providerr!.date?.month}/${providerr!.date?.year}',
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () async {
+                            DateTime? d1 = await showDatePicker(
+                              context: context,
+                              initialDate: providerr!.date!,
+                              firstDate: DateTime(2001),
+                              lastDate: DateTime(2050),
+                            );
+                            providerr!.changeDate(d1!);
                           },
-                          icon: const Icon(Icons.delete,
-                              color: Colors.grey, size: 30)),
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.visibility_off,
-                            color: Colors.grey, size: 30)
-                      ),
-                    ],
+                          icon: const Icon(Icons.calendar_month),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Time:- ${providerr!.time!.hour}:${providerr!.time!.minute}',
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () async {
+                            TimeOfDay? d1 = await showTimePicker(
+                              context: context,
+                              initialTime: providerr!.time!,
+                            );
+                            providerr!.changeTime(d1!);
+                          },
+                          icon: const Icon(Icons.watch_later),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
