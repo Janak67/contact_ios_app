@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:contact_ios_app/screen/contact_info/provider/contact_info_provider.dart';
+import 'package:contact_ios_app/screen/dash/provider/dash_provider.dart';
 import 'package:contact_ios_app/screen/home/provider/contact_provider.dart';
 import 'package:contact_ios_app/utils/app_routes.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (context) => ContactInfoProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DashProvider(),
         ),
       ],
       child: Platform.isAndroid
