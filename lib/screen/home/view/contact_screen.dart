@@ -94,9 +94,9 @@ class _ContactScreenState extends State<ContactScreen> {
           child: Column(
             children: [
               const SizedBox(height: 110),
-              const Row(
+              Row(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Contact",
@@ -104,28 +104,39 @@ class _ContactScreenState extends State<ContactScreen> {
                           TextStyle(color: CupertinoColors.black, fontSize: 30),
                     ),
                   ),
-                  Spacer(),
-                  Text('Time:- hh:mm:ss'),
-                  SizedBox(height: 20),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     showCupertinoModalPopup(
-                  //       context: context,
-                  //       builder: (context) => SizedBox(
-                  //         height: 200,
-                  //         child: CupertinoDatePicker(
-                  //           onDateTimeChanged: (value) {
-                  //             providerr!.changeTime(value);
-                  //           },
-                  //           initialDateTime: providerr!.time,
-                  //           mode: CupertinoDatePickerMode.time,
-                  //           use24hFormat: true,
-                  //         ),
-                  //       ),
-                  //     );
-                  //   },
-                  //   child: const Icon(CupertinoIcons.time),
-                  // ),
+                  const Spacer(),
+                  Text(
+                      'Time:- ${providerr!.time!.hour}:${providerr!.time!.minute}'),
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) {
+                          return SizedBox(
+                            height: 200,
+                            child: CupertinoTimerPicker(
+                              mode: CupertinoTimerPickerMode.hm,
+                              backgroundColor: CupertinoColors.white,
+                              onTimerDurationChanged: (value) {
+                                List<String> l1 = value.toString().split(':');
+                                TimeOfDay? t1 = TimeOfDay(
+                                  hour: int.parse(l1[0]),
+                                  minute: int.parse(l1[1]),
+                                );
+                                providerr!.changeTime(t1);
+                              },
+                              initialTimerDuration: Duration(
+                                hours: providerr!.time!.hour,
+                                minutes: providerr!.time!.minute,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: const Icon(CupertinoIcons.time),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
