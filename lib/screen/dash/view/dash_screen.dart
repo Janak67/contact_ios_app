@@ -14,6 +14,7 @@ class DashScreen extends StatefulWidget {
 class _DashScreenState extends State<DashScreen> {
   DashProvider? providerr;
   DashProvider? providerw;
+  // late TabController _tabController;
   List<Widget> screen = [
     const ContactScreenAndroid(),
     const ContactInfoScreenAndroid(),
@@ -23,7 +24,41 @@ class _DashScreenState extends State<DashScreen> {
   Widget build(BuildContext context) {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
-    return SafeArea(
+    return
+    //   DefaultTabController(
+    //   length: 3,
+    //   child: Scaffold(
+    //     appBar: AppBar(
+    //       bottom: TabBar(
+    //         controller: _tabController,
+    //         onTap: (value){
+    //           int i =value;
+    //           providerr!.changeStep(i);
+    //         },
+    //         tabs: const [
+    //           Tab(
+    //             icon: Icon(Icons.cloud_outlined),
+    //           ),
+    //           Tab(
+    //             icon: Icon(Icons.beach_access_sharp),
+    //           ),
+    //           Tab(
+    //             icon: Icon(Icons.brightness_5_sharp),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //     body: TabBarView(
+    //       controller: _tabController,
+    //       children: const [
+    //         Center(child: Text('Its cloudy here')),
+    //         Center(child: Text('Its rainy here')),
+    //         Center(child: Text('Its sunny here')),
+    //       ],
+    //     ),
+    //   ),
+    // );
+      SafeArea(
       child: Scaffold(
         body: screen[providerw!.stepIndex],
         bottomNavigationBar: BottomNavigationBar(
