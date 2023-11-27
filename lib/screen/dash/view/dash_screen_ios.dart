@@ -34,6 +34,8 @@ class _DashScreenIosState extends State<DashScreenIos> {
                 children: screens,
               ),
               CupertinoTabBar(
+                backgroundColor: CupertinoColors.darkBackgroundGray,
+                activeColor: CupertinoColors.white,
                 currentIndex: providerr!.stepIndex,
                 onTap: (value) {
                   int i = value;

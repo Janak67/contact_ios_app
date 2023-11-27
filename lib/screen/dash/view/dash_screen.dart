@@ -24,7 +24,7 @@ class _DashScreenState extends State<DashScreen> {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
