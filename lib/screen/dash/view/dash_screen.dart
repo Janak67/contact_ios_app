@@ -1,6 +1,7 @@
 import 'package:contact_ios_app/screen/contact_info/view/contact_info_screen_android.dart';
 import 'package:contact_ios_app/screen/dash/provider/dash_provider.dart';
 import 'package:contact_ios_app/screen/home/view/contact_screen_android.dart';
+import 'package:contact_ios_app/screen/profile/view/profile_screen_android.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,7 @@ class _DashScreenState extends State<DashScreen> {
   List<Widget> screen = [
     const ContactScreenAndroid(),
     const ContactInfoScreenAndroid(),
+    const ProfileScreenAndroid(),
   ];
 
   @override
@@ -24,7 +26,7 @@ class _DashScreenState extends State<DashScreen> {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -41,6 +43,9 @@ class _DashScreenState extends State<DashScreen> {
             tabs: const [
               Tab(
                 icon: Icon(Icons.recent_actors),
+              ),
+              Tab(
+                icon: Icon(Icons.contact_mail),
               ),
               Tab(
                 icon: Icon(Icons.person),
