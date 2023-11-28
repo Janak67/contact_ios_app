@@ -268,7 +268,6 @@ class _ContactScreenState extends State<ContactScreen> {
                     ),
                   ),
                   const Divider(thickness: 1),
-                  const SizedBox(height: 170,),
                 ],
               ),
             ],

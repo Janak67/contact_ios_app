@@ -24,34 +24,58 @@ class _DashScreenIosState extends State<DashScreenIos> {
   Widget build(BuildContext context) {
     providerr = context.read<DashProvider>();
     providerw = context.watch<DashProvider>();
-    return CupertinoTabView(
-      builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              IndexedStack(
-                index: providerw!.stepIndex,
-                children: screens,
-              ),
-              CupertinoTabBar(
-                backgroundColor: CupertinoColors.darkBackgroundGray,
-                activeColor: CupertinoColors.white,
-                currentIndex: providerr!.stepIndex,
-                onTap: (value) {
-                  int i = value;
-                  providerr!.changeStep(i);
-                },
-                items: const [
-                  BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.home), label: 'Home'),
-                  BottomNavigationBarItem(
-                      icon: Icon(CupertinoIcons.person), label: 'Contact'),
-                ],
-              ),
-            ],
-          ),
+    return CupertinoTabScaffold(
+      tabBar: CupertinoTabBar(
+        currentIndex: providerr!.stepIndex,
+        onTap: (value) {
+          int i= value;
+          providerr!.changeStep(i);
+        },
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person), label: 'Contact'),
+        ],
+      ),
+      tabBuilder: (context, index) {
+        return CupertinoTabView(
+          builder: (BuildContext context) {
+            return Column(
+              children: screens,
+            );
+          },
         );
       },
     );
+    //   CupertinoTabView(
+    //   builder: (BuildContext context) {
+    //     return SingleChildScrollView(
+    //       child: Column(
+    //         children: [
+    //           IndexedStack(
+    //             index: providerw!.stepIndex,
+    //             children: screens,
+    //           ),
+    //           CupertinoTabBar(
+    //             backgroundColor: CupertinoColors.darkBackgroundGray,
+    //             activeColor: CupertinoColors.white,
+    //             currentIndex: providerr!.stepIndex,
+    //             onTap: (value) {
+    //               int i = value;
+    //               providerr!.changeStep(i);
+    //             },
+    //             items: const [
+    //               BottomNavigationBarItem(
+    //                   icon: Icon(CupertinoIcons.home), label: 'Home'),
+    //               BottomNavigationBarItem(
+    //                   icon: Icon(CupertinoIcons.person), label: 'Contact'),
+    //             ],
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 }
