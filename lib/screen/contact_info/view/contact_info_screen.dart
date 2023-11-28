@@ -8,24 +8,22 @@ class ContactInfoScreen extends StatefulWidget {
 }
 
 class _ContactInfoScreenState extends State<ContactInfoScreen> {
+  double currentSliderValue = 0;
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: Row(
-          children: [
-            GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(CupertinoIcons.back)),
-            const Text("Contact"),
-          ],
-        ),
-        trailing: const Text('Edit'),
-      ),
-      backgroundColor: CupertinoColors.systemGrey6,
-      child: Padding(
+    return
+      // navigationBar: CupertinoNavigationBar(
+      //   leading: Row(
+      //     children: [
+      //       GestureDetector(
+      //           onTap: () {},
+      //           child: const Icon(CupertinoIcons.back)),
+      //       const Text("Contact"),
+      //     ],
+      //   ),
+      //   trailing: const Text('Edit'),
+      // ),
+      Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
@@ -134,6 +132,16 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 3),
+                  CupertinoSlider(
+                    key: const Key('slider'),
+                    value: currentSliderValue,
+                    divisions: 5,
+                    max: 100,
+                    activeColor: CupertinoColors.systemPurple,
+                    thumbColor: CupertinoColors.systemPurple,
+                    onChanged: (double value) {},
+                  ),
                 ],
               ),
               const SizedBox(height: 12),
@@ -199,8 +207,7 @@ class _ContactInfoScreenState extends State<ContactInfoScreen> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 
   Container boxTile(BuildContext context, IconData icon, String text) {

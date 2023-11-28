@@ -53,22 +53,5 @@ class _DashScreenState extends State<DashScreen> {
             children: screen),
       ),
     );
-    //   SafeArea(
-    //   child: Scaffold(
-    //     body: screen[providerw!.stepIndex],
-    //     bottomNavigationBar: BottomNavigationBar(
-    //       currentIndex: providerr!.stepIndex,
-    //       onTap: (value) {
-    //         int i = value;
-    //         providerr!.changeStep(i);
-    //       },
-    //       items: const [
-    //         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    //         BottomNavigationBarItem(
-    //             icon: Icon(Icons.contact_page_sharp), label: 'ContactInfo'),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }
