@@ -232,25 +232,6 @@ class _ContactScreenState extends State<ContactScreen> {
                   const Divider(thickness: 1),
                   const SizedBox(height: 15),
                   const Text(
-                    'V',
-                    style: TextStyle(
-                        color: CupertinoColors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Divider(thickness: 1),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, 'infoIos');
-                    },
-                    child: const Text(
-                      'Vivek',
-                      style: TextStyle(color: CupertinoColors.black),
-                    ),
-                  ),
-                  const Divider(thickness: 1),
-                  const SizedBox(height: 15),
-                  const Text(
                     'Z',
                     style: TextStyle(
                         color: CupertinoColors.black,

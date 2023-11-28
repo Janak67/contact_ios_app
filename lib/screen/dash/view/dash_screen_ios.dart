@@ -41,9 +41,7 @@ class _DashScreenIosState extends State<DashScreenIos> {
       tabBuilder: (context, index) {
         return CupertinoTabView(
           builder: (BuildContext context) {
-            return Column(
-              children: screens,
-            );
+            return screens[providerw!.stepIndex];
           },
         );
       },
